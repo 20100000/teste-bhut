@@ -1,0 +1,40 @@
+version: "3"
+volumes:
+  data-volume: {}
+services:
+  db:
+    container_name: mysql_go
+    build: ./db
+    image: mysql:latest
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    expose:
+      - 3306
+    ports:
+      - 3308:3306
+    volumes:
+      - data-volume:/var/lib/mysql
+      - ./db/bhut.sql:/docker-entrypoint-initdb.d/init.sql
+    command: mysqld --init-file="/docker-entrypoint-initdb.d/init.sql"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bhut
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+  app:
+    build: .
+    command: npm run go
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/app
+    environment:
+        - DB_HOST=db
+        - BD_PORT=3308
+        - DB_DATABASE=bhut
+        - DB_USERNAME=root
+        - DB_PASSWORD=root
+        - JWT_SECRET=ED46CB0D0B9A5B707B40CF9BC7E06259
+networks:
+  my_net:
+
