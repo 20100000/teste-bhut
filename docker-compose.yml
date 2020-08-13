@@ -30,7 +30,7 @@ services:
       - .:/usr/app
     environment:
         - DB_HOST=db
-        - BD_PORT=3308
+        - DB_PORT=3308
         - DB_DATABASE=bhut
         - DB_USERNAME=root
         - DB_PASSWORD=root

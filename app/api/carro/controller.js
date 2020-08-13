@@ -40,8 +40,7 @@ const _saveCarro = async (req, res, next, model) => {
 const _updateCarro = async (req, res, next, model) => {
     const id = req.params.id
     const carro = req.body;
-    console.log('controlllllllllllller', carro)
-    // try {
+    try {
         if (carro.marca && carro.modelo){
             const data = await model.mUpdateCarro(carro, id);
             return res.send(JSON.stringify({success: true, data: data}));
@@ -49,10 +48,10 @@ const _updateCarro = async (req, res, next, model) => {
             res.status(400);
             return res.send(JSON.stringify({success: false, error: 'insira marca e modelo'}));
         }
-    // } catch (e) {
-    //     res.status(400);
-    //     return res.send(JSON.stringify({success: false, error: e}));
-    // }
+    } catch (e) {
+        res.status(400);
+        return res.send(JSON.stringify({success: false, error: e}));
+    }
 };
 
 const _removeCarro = async (req, res, next, model) => {
