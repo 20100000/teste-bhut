@@ -50,7 +50,7 @@ curl -X GET \
   -H 'postman-token: 1764c2e5-92ad-659a-1fe9-7fd6e80c8996'
 </pre>
 
-<h3>Mostrar carro unico</h3>
+<h3>Mostrar unico carro </h3>
 <pre>
 curl -X GET \
   http://localhost:3000/carro/2 \
