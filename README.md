@@ -40,7 +40,7 @@ curl -X POST \
 </pre>
 ou email:"teste@bhut.com" senha:"123456"
 
-<h3>APIs com authorization insira o tokem</h3>
+<h3>APIs com authorization insira o Bearer + tokem</h3>
 <h3>Mostrar todos os carros</h3>
 <pre>
 curl -X GET \
